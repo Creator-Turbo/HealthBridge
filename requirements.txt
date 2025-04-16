@@ -1,0 +1,16 @@
+
+sentence-transformers>=2.2,<3.0
+langchain>=0.1.0,<0.2.0
+flask>=2.2,<3.0
+pypdf>=3.0,<4.0
+pinecone-client>=3.0,<4.0
+python-dotenv>=1.0,<2.0
+langchain-pinecone>=0.0.3,<0.1
+langchain-community>=0.0.3,<0.1
+langchain-huggingface>=0.0.3,<0.1
+# protobuf==4.24.3 
+# google==3.0.0
+# googleapis-common-protos>=1.56.0
+pinecone[grpc]
+
+-e .
