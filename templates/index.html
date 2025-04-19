@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -56,45 +56,185 @@
             </div>
     </section>
 
-
+  
     
 
-   <!-- Chatbot Widget -->
-   <div class="chatbot-container">
+
+    
+    <style>
+      .chatbot-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 320px;
+        font-family: Arial, sans-serif;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        border-radius: 10px;
+        overflow: hidden;
+        z-index: 999;
+      }
+  
+      .chatbot-header {
+        background: #4CAF50;
+        color: white;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
+  
+      .chatbot-header img {
+        width: 30px;
+        margin-right: 10px;
+      }
+  
+      .chatbot-body {
+        display: none;
+        background: #fff;
+        padding: 10px;
+      }
+  
+      .chat-box {
+        height: 200px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        background: #f9f9f9;
+        border-radius: 5px;
+      }
+  
+      .bot-message, .user-message {
+        margin: 8px 0;
+        padding: 8px;
+        border-radius: 8px;
+        max-width: 80%;
+      }
+  
+      .bot-message {
+        background: #e0f7fa;
+        align-self: flex-start;
+      }
+  
+      .user-message {
+        background: #d1c4e9;
+        align-self: flex-end;
+        text-align: right;
+      }
+  
+      .chat-input {
+        display: flex;
+        gap: 5px;
+      }
+  
+      .chat-input input {
+        flex: 1;
+        padding: 8px;
+      }
+  
+      .chat-input button {
+        padding: 8px 12px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+  
+      .chat-toggle-btn {
+        display: none;
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+  
+      .chatbot-body.open + .chat-toggle-btn {
+        display: block;
+      }
+  
+      h2 {
+        margin-top: 0;
+        text-align: center;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+
+
+  <div class="chatbot-container">
     <div class="chatbot-header" onclick="toggleChat()">
-      <img src="https://img.icons8.com/?size=100&id=65361&format=png&color=000000" alt="icon" />
+      <img src="https://img.icons8.com/?size=100&id=65361&format=png&color=ffffff" alt="icon" />
       <div>
-       
-        <h3>Click the chat and use?</h3>
+        <h3>🩺 Medical Chatbot</h3>
       </div>
     </div>
-
+  
     <div class="chatbot-body" id="chatbotBody">
-      <div class="chat-option">
-        <span>💬 Chat with us now</span>
-        <span>›</span>
+      <div class="chat-box" id="chat-box">
+        <div class="bot-message">Hello! How can I assist you today? 😊</div>
       </div>
-      <div class="chat-section-title">To know about SalesIQ</div>
-      <div class="chat-option">Try now for free ›</div>
-      <div class="chat-option">Book a personalized demo ›</div>
-      <div class="chat-option">Choose the right plan for you ›</div>
-      <div class="chat-option">Register for webinars ›</div>
-
-      <div class="chat-footer">
-        <div class="footer-tab active">🏠 Home</div>
-        <div class="footer-tab">💬 Conversation</div>
-        <div class="footer-tab">❓ FAQs</div>
-        <div class="footer-tab">📄 Articles</div>
+  
+      <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
       </div>
-      <div class="powered">🚀 Driven by SalesIQ</div>
+  
+      <div class="powered" style="text-align:center; font-size: 12px; margin-top: 10px;">
+        
+      </div>
     </div>
-
+  
     <div class="chat-toggle-btn" onclick="toggleChat()">✖</div>
   </div>
-
-
-
-  <!--new 3rd templete book appoinment-->
+  
+  <script>
+    function toggleChat() {
+      const body = document.getElementById("chatbotBody");
+      body.style.display = (body.style.display === "none" || body.style.display === "") ? "block" : "none";
+    }
+  
+    function sendMessage() {
+      let userInput = document.getElementById("user-input").value;
+      if (userInput.trim() === "") return;
+  
+      let chatBox = document.getElementById("chat-box");
+  
+      // User message
+      let userMessage = document.createElement("div");
+      userMessage.className = "user-message";
+      userMessage.innerText = userInput;
+      chatBox.appendChild(userMessage);
+  
+      fetch("/get", {
+        method: "POST",
+        body: new URLSearchParams({ msg: userInput }),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" }
+      })
+      .then(response => response.text())
+      .then(data => {
+        let botMessage = document.createElement("div");
+        botMessage.className = "bot-message";
+        botMessage.innerText = data;
+        chatBox.appendChild(botMessage);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      });
+  
+      document.getElementById("user-input").value = "";
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  
+    document.getElementById("user-input").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") sendMessage();
+    });
+  </script>
+  
+  </body>
+  </html>
+  
+  <!--      appio -->
 
   <section class="health-section" id="appoinment">
     <div class="doctor-info">
@@ -239,4 +379,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="script.js"></script>
 </body>
-</html>
+</html> 
+
