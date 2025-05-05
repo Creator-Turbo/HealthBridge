@@ -13,4 +13,6 @@ langchain-huggingface>=0.0.3,<0.1
 # googleapis-common-protos>=1.56.0
 pinecone[grpc]
 
+Flask-Mail==0.9.1
+pymongo==4.6.0
 -e .
