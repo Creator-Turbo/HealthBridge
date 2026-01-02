@@ -186,9 +186,8 @@ If you encounter any bugs or want to request a new feature, please open an issue
 This project was developed by:
 
 
-| [![Bablu](https://github.com/Creator-Turbo/images-/blob/main/resized_image.png?raw=true)](https://your-resume-link.com) | [![Anjali](https://github.com/Creator-Turbo/images-/blob/main/resized_image.png?raw=true)](https://resume-link2.com) | [![Ravi](https://github.com/Creator-Turbo/images-/blob/main/resized_image.png?raw=true)](https://resume-link3.com) | [![Sneha](https://github.com/Creator-Turbo/images-/blob/main/resized_image.png?raw=true)](https://resume-link4.com) |
-|:--:|:--:|:--:|:--:|
-| **Bablu Kumar Pandey**<br>*Terema Developer* | **Anjali Sharma**<br>*Backend Developer* | **Ravi Verma**<br>*NLP Engineer* | **Sneha Das**<br>*UI/UX Designer* |
+| [![Bablu](https://github.com/Creator-Turbo/images-/blob/main/resized_image.png?raw=true)](https://your-resume-link.com) 
+| **Bablu Kumar Pandey**<br>*Terema Developer* 
 
 
 
